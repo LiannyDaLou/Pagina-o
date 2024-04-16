@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paginação</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+    }
+
+    .pagination li {
+        margin-right: 10px;
+    }
+
+    .pagination li a {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #333;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+
+    .pagination li a:hover {
+        background-color: #555;
+    }
+
+    .pagination li.active a {
+        background-color: #555;
+    }
+</style>
+</head>
+<body>
+
+<ul class="pagination">
+    <li><a href="#" onclick="previousPage()"> << </a></li>
+    <li><a href="#" onclick="changePage(1)">1</a></li>
+    <li><a href="#" onclick="changePage(2)">2</a></li>
+    <li><a href="#" onclick="changePage(3)">3</a></li>
+    <li><a href="#" onclick="changePage(4)">4</a></li>
+    <li><a href="#" onclick="changePage(5)">5</a></li>
+    <li><a href="#" onclick="nextPage()"> >> </a></li>
+</ul>
+
+<script>
+    var currentPage = 1;
+    var totalPages = 5; // Defina o número total de páginas aqui
+
+    function changePage(pageNumber) {
+        var paginationItems = document.querySelectorAll('.pagination li');
+        paginationItems.forEach(function(item) {
+            item.classList.remove('active');
+        });
+        paginationItems[pageNumber].classList.add('active');
+        currentPage = pageNumber;
+    }
+
+    function nextPage() {
+        if (currentPage < totalPages) {
+            changePage(currentPage + 1);
+        }
+    }
+
+    function previousPage() {
+        if (currentPage > 1) {
+            changePage(currentPage - 1);
+        }
+    }
+</script>
+
+</body>
+</html>
